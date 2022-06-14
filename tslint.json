@@ -1,0 +1,33 @@
+{
+    "defaultSeverity": "error",
+    "extends": ["tslint:recommended", "tslint-config-prettier"],
+    "compileOnSave": true,
+    "jsRules": {},
+    "rules": {
+        "max-line-length": false,
+        "quotemark": false,
+        "prefer-for-of": true,
+        "only-arrow-functions": [true, "allow-declarations", "allow-named-functions"],
+        "promise-function-async": false,
+        "curly": true,
+        "await-promise": true,
+        "no-shadowed-variable": false,
+        "jsx-boolean-value": false,
+        "jsx-no-lambda": false,
+        "jsx-no-multiline-js": false,
+        "object-literal-sort-keys": false,
+        "jsx-curly-spacing": false,
+        "member-ordering": [false],
+        "semicolon": [true, "always", "ignore-bound-class-methods"],
+        "object-literal-key-quotes": [true, "as-needed"],
+        "jsx-alignment": false,
+        "no-trailing-whitespace": false,
+        "radix": false,
+        "no-invalid-this": [true, "check-function-in-method"],
+        "array-type": [true, "array"]
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": ["**/*.js"]
+    }
+}
