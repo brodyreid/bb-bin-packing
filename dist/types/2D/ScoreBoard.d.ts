@@ -6,7 +6,7 @@ export default class ScoreBoard {
     constructor(bins: Bin[], boxes: Box[]);
     debug(): void;
     addBinEntries(bin: any, boxes: any): void;
-    largestNotFitingBox(): any;
+    largestNotFitingBox(): false | ScoreBoardEntry;
     bestFit(): ScoreBoardEntry;
     removeBox(box: any): void;
     addBin(bin: any): void;

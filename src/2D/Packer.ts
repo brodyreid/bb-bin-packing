@@ -4,6 +4,8 @@ import Score from './Score';
 import ScoreBoard from './ScoreBoard';
 import ScoreBoardEntry from './ScoreBoardEntry';
 
+type PackedScores<T> = Partial<ScoreBoardEntry> & { box: T; };
+
 export default class Packer {
 	bins: Bin[] = [];
 	unpackedBoxes: Box[] = [];
@@ -12,20 +14,20 @@ export default class Packer {
 		this.bins = bins;
 	}
 
-	pack(boxes: Box[], options: { limit?: number } = {}) {
-        let packedBoxes: Partial<ScoreBoardEntry>[] = [];
+	pack<T extends Box>(boxes: T[]): PackedScores<T>[] {
+        let packedBoxes: PackedScores<T>[] = [];
         let entry: ScoreBoardEntry | null;
 
 		boxes = boxes.filter((box) => !box.packed);
 		if (boxes.length === 0) return packedBoxes;
 
-		let limit = options.limit || Score.MAX_INT;
+		let limit = Score.MAX_INT;
 		let board = new ScoreBoard(this.bins, boxes);
 		while ((entry = board.bestFit())) {
 			entry.bin.insert(entry.box);
 			board.removeBox(entry.box);
 			board.recalculateBin(entry.bin);
-            packedBoxes.push({box: entry.box, score: entry.score});
+            packedBoxes.push({ box: entry.box as T, score: entry.score });
 			if (packedBoxes.length >= limit) {
 				break;
 			}

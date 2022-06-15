@@ -22,7 +22,7 @@ export default class Bin {
 	get efficiency() {
 		let boxesArea = 0;
 		this.boxes.forEach((box) => {
-			boxesArea += box.area;
+			boxesArea += box.width * box.height;
 		});
 		return (boxesArea * 100) / this.area;
 	}

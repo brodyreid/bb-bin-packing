@@ -21,7 +21,6 @@ export default class ScoreBoard {
 		console.table(
 			this.entries.map((entry) => ({
 				bin: entry.bin.label,
-				box: entry.box.label,
 				score: entry.score,
 			}))
 		);
@@ -36,16 +35,18 @@ export default class ScoreBoard {
 	}
 
 	largestNotFitingBox() {
-        let unfit;
+        let unfit: ScoreBoardEntry;
 		let fittingBoxes = this.entries
 			.filter((entry) => entry.fit)
 			.map((entry) => entry.box);
 
-		this.entries.forEach((entry) => {
+        this.entries.forEach((entry) => {
+            const unfitArea = unfit.box.width * unfit.box.height;
+            const entryArea = entry.box.width * entry.box.height;
 			if (!fittingBoxes.includes(entry.box)) {
 				return;
 			}
-			if (unfit === null || unfit.box.area < entry.box.area) {
+			if (unfit === null || unfitArea < entryArea) {
 				unfit = entry;
 			}
 		});
