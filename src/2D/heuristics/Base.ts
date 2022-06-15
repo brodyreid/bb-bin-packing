@@ -18,9 +18,9 @@ export default class Base {
 		return bestScore;
 	}
 
-	tryPlaceRectIn(freeRect, box, rectWidth, rectHeight, bestScore) {
+	tryPlaceRectIn(freeRect, box: Box, rectWidth, rectHeight, bestScore) {
 		if (freeRect.width >= rectWidth && freeRect.height >= rectHeight) {
-			let score = this.calculateScore();
+			let score = this.calculateScore(freeRect, rectWidth, rectHeight);
 			if (score < bestScore) {
 				box.x = freeRect.x;
 				box.y = freeRect.y;
@@ -32,7 +32,7 @@ export default class Base {
 		}
 	}
 
-	calculateScore() {
+	calculateScore(_freeRect, _rectWidth, _rectHeight): Score {
 		throw 'NotImplementedError';
 	}
 }
