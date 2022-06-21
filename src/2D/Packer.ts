@@ -2,9 +2,8 @@ import Bin from './Bin';
 import Box from './Box';
 import Score from './Score';
 import ScoreBoard from './ScoreBoard';
+import { PackedScores } from './Types';
 import ScoreBoardEntry from './ScoreBoardEntry';
-
-type PackedScores<T> = Partial<ScoreBoardEntry> & { box: T; };
 
 export default class Packer {
 	bins: Bin[] = [];
