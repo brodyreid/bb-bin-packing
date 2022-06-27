@@ -18,7 +18,13 @@ export default class Base {
 		return bestScore;
 	}
 
-	tryPlaceRectIn(freeRect, box: Box, rectWidth, rectHeight, bestScore) {
+	tryPlaceRectIn(
+		freeRect: FreeSpaceBox,
+		box: Box,
+		rectWidth,
+		rectHeight,
+		bestScore
+	) {
 		if (freeRect.width >= rectWidth && freeRect.height >= rectHeight) {
 			let score = this.calculateScore(freeRect, rectWidth, rectHeight);
 			if (score < bestScore) {
